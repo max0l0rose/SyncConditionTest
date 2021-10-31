@@ -30,9 +30,11 @@ class Store {
 			System.out.println("< Покупатель купил товар. Товаров на складе: " + product);
 
 			condition.signalAll();
+			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			System.out.println(e.getMessage());
 		} finally {
+			System.out.println("< Покупатель покинул склад.");
 			locker.unlock();
 		}
 	}
@@ -53,9 +55,11 @@ class Store {
 			System.out.println(">>> Производитель добавил товар. Товаров на складе: " + product);
 			// сигнализируем
 			condition.signalAll();
+			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			System.out.println(e.getMessage());
 		} finally {
+			System.out.println(">>> Производитель покинул склад.");
 			locker.unlock();
 		}
 	}
